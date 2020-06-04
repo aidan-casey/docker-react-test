@@ -1,0 +1,21 @@
+version: '3.2'
+
+services:
+    web:
+        build:
+            context: .
+            dockerfile: Dockerfile.dev
+        ports:
+            - "8080:3000"
+        stdin_open: true
+        volumes:
+            - /var/www/node_modules
+            - .:/var/www
+    tests:
+        build:
+            context: .
+            dockerfile: Dockerfile.dev
+        volumes:
+            - /var/www/node_modules
+            - .:/var/www
+        command: ["npm", "run", "test"]

@@ -1,0 +1,14 @@
+FROM node:alpine
+
+# Set our working directory
+WORKDIR '/var/www'
+
+# Install our dependencies
+COPY package.json .
+RUN npm install
+
+# Copy our source code
+COPY . .
+
+# Start the server
+CMD ["npm", "run", "start"]
