@@ -21,5 +21,7 @@ RUN npm run build
 # # # # # # # # # # # # # # #
 FROM nginx
 
+EXPOSE 80
+
 # Copy the source code from the builder
 COPY --from=builder /var/www/build /usr/share/nginx/html
